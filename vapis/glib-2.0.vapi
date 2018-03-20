@@ -4356,6 +4356,27 @@ namespace GLib {
 
 		private unowned List<G> first ();
 		private unowned List<G> last ();
+
+		[CCode (cname = "g_list_append"), ReturnsModifiedPointer ()]
+		public void add (owned G data);
+		[CCode (cname = "g_list_insert"), ReturnsModifiedPointer ()]
+		public void insert (owned G data, int position=0);
+		[CCode (cname = "g_list_remove"), ReturnsModifiedPointer ()]
+		public void remove (G data);
+		[CCode (cname = "g_list_length")]
+		public uint length ();
+		[CCode (cname = "g_list_copy")]
+		public List<unowned G> copy ();
+		[CCode (cname = "g_list_foreach")]
+		public void forEach (Func<G> func);
+		public unowned List<G> tail { get { return last(); } }
+		public unowned List<G> head { get { return first(); } }
+		[CCode (cname = "g_list_nth")]
+		public unowned List<G> item (uint n);
+		[CCode (cname = "g_list_find")]
+		public unowned List<G> find (G data);
+
+		
 	}
 
 	/* Singly-Linked Lists */
